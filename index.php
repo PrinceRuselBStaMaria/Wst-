@@ -17,7 +17,17 @@
     <div class="overlay">
         <div class="container">
             <div class="leftside">
-                <h1>PlaceHolder</h1>
+                <img class="puso top" src="img/lilacheart.png" alt="design">
+                <div class="leftcont">
+                    <div class="leftimg">
+                        <img src="img/cover.jpg" alt="cover">
+                    </div>
+                    <div class="lefttext">
+                        <h1>Title</h1>
+                        <p>artist</p>
+                    </div>
+                </div>
+                <img class="puso bottom" src="img/lilacheart copy.png" alt="design">
             </div>
             <div class="rightside">
                 <div class="title">
@@ -46,6 +56,11 @@
                                         <div class='tableButton'>
                                             <button class='tbbutn'><img src='img/delete-bin-2-fill.svg' alt='Delete'></button>
                                             <button class='tbbutn'><img src='img/edit-2-fill.svg' alt='Edit'></button>
+                                                                <button class='tbbutn' id='zoomButn' 
+                                                                    data-image='{$row['image_path']}' 
+                                                                    data-title='{$row['name']}' 
+                                                                    data-artist='{$row['artist']}'>
+                                            <img src='img/zoom.svg' alt='expand'></button>
                                         </div>
                                       </td>";
                                 echo "</tr>";
@@ -214,5 +229,6 @@
             </div>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,29 @@
+document.addEventListener("DOMContentLoaded", function () {
+  // Use querySelectorAll for multiple elements
+  const zoomBtns = document.querySelectorAll("#zoomButn");
+
+  // Check if buttons exist
+  if (zoomBtns.length > 0) {
+    zoomBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const image = btn.getAttribute("data-image") || "img/cover.jpg";
+        const title = btn.getAttribute("data-title") || "Song Title";
+        const artist = btn.getAttribute("data-artist") || "Artist";
+
+        // Fix query selectors with proper class notation
+        const imgToChange = document.querySelector(".leftimg img");
+        const titleToChange = document.querySelector(".lefttext h1");
+        const artistToChange = document.querySelector(".lefttext p");
+
+        // Update elements if they exist
+        if (imgToChange && titleToChange && artistToChange) {
+          imgToChange.src = image;
+          titleToChange.textContent = title;
+          artistToChange.textContent = artist;
+        }
+      });
+    });
+  } else {
+    console.log("No zoom buttons found");
+  }
+});

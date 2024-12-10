@@ -9,27 +9,94 @@
   height: 98vh;
   justify-content: center;
   align-items: center;
-  background-color: transparent; /* Remove brown background */
+  background-color: transparent;
   gap: 20px;
   position: relative;
   z-index: 1;
 }
 .rightside {
   display: flex;
-
   flex-direction: column;
   padding: 20px;
   border-radius: 10px;
   color: #9071cb;
 }
+.puso {
+  position: absolute;
+  gap: 10px;
+  width: 400px;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 15%;
+  padding-left: 3px;
+  padding-right: 3px;
+  margin: 10px 10px 0;
+}
+.puso.top {
+  top: -90px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.puso.bottom {
+  bottom: -200px;
+  left: 33%;
+  transform: translateX(-50%);
+}
+.puso img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .leftside {
   display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 20px;
+  border-radius: 20px;
+}
+.leftcont {
+  display: flex;
+  flex-direction: column;
   gap: 20px;
   background-color: white;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 80px;
 }
+.leftside h1 {
+  font-size: 2em;
+  font-weight: 700;
+  margin: 0;
+}
+.leftside p {
+  font-size: 1.3em;
+  margin: 0;
+}
+.leftimg {
+  display: flex;
+  gap: 10px;
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 20%;
+  padding-left: 3px;
+  padding-right: 3px;
+  margin: 10px 10px 0;
+}
+.leftimg img {
+  width: 100%;
+  height: 100%;
+  border-radius: 18%;
+  object-fit: cover;
+}
+.lefttext {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
 .title {
   font-size: 30px;
   font-weight: 700;
@@ -58,7 +125,6 @@
   border-radius: 10px;
 }
 
-/* Keep table width consistent */
 .listofsong table {
   width: 100%;
   border-collapse: collapse;
@@ -66,7 +132,7 @@
 .listofsong tr {
   padding-bottom: 10px;
 }
-/* Optional: Add some padding to table cells */
+
 .tableButton {
   padding-left: 50px;
   padding-right: 10px;
@@ -225,11 +291,11 @@ form input::placeholder {
 /* From Uiverse.io by dalbrechtmartin */
 .starbut {
   position: relative;
-  width: 270px; /* Set specific width */
-  height: 50px; /* Set specific height */
-  padding: 8px 15px; /* Reduce padding */
+  width: 270px;
+  height: 50px;
+  padding: 8px 15px;
   background: #ffffff;
-  font-size: 16px; /* Slightly smaller font */
+  font-size: 16px;
   font-weight: 600;
   color: #000000;
   box-shadow: 0px 0px 10px 0px rgb(255, 255, 255);

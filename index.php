@@ -40,6 +40,11 @@
                             while($row = $result->fetch_assoc()){
                                 echo "<tr>";
                                 echo "<td>
+                                        <div class='song-id'>
+                                            <div class='songId'>{$row['id']}</div>
+                                        </div>
+                                    </td>";
+                                echo "<td>
                                         <div class='songImg'>
                                             <img src='" . 
                                             (!empty($row['image_path']) ? $row['image_path'] : 'img/cover.jpg') . 

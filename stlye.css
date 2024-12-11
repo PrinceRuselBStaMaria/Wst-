@@ -173,6 +173,20 @@
   flex-direction: column;
   text-align: left;
 }
+.song-id {
+  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: center;
+}
+.songId {
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: black;
+  padding-right: 0;
+  margin-right: 0;
+}
 .SongName {
   display: flex;
   gap: 10px;

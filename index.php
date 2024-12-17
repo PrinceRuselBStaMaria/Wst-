@@ -59,13 +59,18 @@
                                      </td>";
                                 echo "<td>
                                         <div class='tableButton'>
-                                            <button class='tbbutn'><img src='img/delete-bin-2-fill.svg' alt='Delete'></button>
-                                            <button class='tbbutn'><img src='img/edit-2-fill.svg' alt='Edit'></button>
-                                                                <button class='tbbutn' id='zoomButn' 
-                                                                    data-image='{$row['image_path']}' 
-                                                                    data-title='{$row['name']}' 
-                                                                    data-artist='{$row['artist']}'>
-                                            <img src='img/zoom.svg' alt='expand'></button>
+                                            <button class='tbbutn' id='deleteButn' data-id='{$row['id']}'>
+                                                <img src='img/delete-bin-2-fill.svg' alt='Delete'>
+                                            </button>
+                                            <button class='tbbutn' id='editButn' data-id='{$row['id']}'>
+                                                <img src='img/edit-2-fill.svg' alt='Edit'>
+                                            </button>
+                                            <button class='tbbutn' id='zoomButn' 
+                                                data-image='{$row['image_path']}' 
+                                                data-title='{$row['name']}' 
+                                                data-artist='{$row['artist']}'>
+                                                <img src='img/zoom.svg' alt='expand'>
+                                            </button>
                                         </div>
                                       </td>";
                                 echo "</tr>";
@@ -75,7 +80,7 @@
                     </table>
                 </div>
                 
-                <!-- Star button moved outside listofsong -->
+                
             <button class="starbut" onclick="window.location.href='form.php'">
                 Add Song
                 <div class="star-1">

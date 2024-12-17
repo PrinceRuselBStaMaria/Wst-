@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const zoomBtns = document.querySelectorAll("#zoomButn");
+  const deleteBtns = document.querySelectorAll("#deleteButn");
+  const editBtns = document.querySelectorAll("#editButn");
 
   zoomBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -16,4 +18,41 @@ document.addEventListener("DOMContentLoaded", function () {
       artistToChange.textContent = artist;
     });
   });
+
+  deleteBtns.forEach((btn) =>{
+    btn.addEventListener("click", function (){
+      const idtoDelete = btn.getAttribute("data-id");
+      if(confirm("Delete this song?")){
+        fetch("delete_song.php", {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: 'id='+idtoDelete
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            const row = this.closest('tr');
+            row.remove();
+          } else {
+            alert('Error deleting song');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Error deleting song');
+        });
+        
+      }
+    })
+  })
+
+  editBtns.forEach((btn) => {
+    btn.addEventListener("click", function() {
+        const id = this.getAttribute("data-id");
+        window.location.href = `form_update.php?id=${id}`;
+    });
+  });
+
 });

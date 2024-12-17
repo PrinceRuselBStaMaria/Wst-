@@ -34,6 +34,9 @@ if(isset($_FILES['coverImage'])) {
             }
             
         }
+        else {
+            $errorMessage = "Error uploading file";
+        } 
     }
 }
 

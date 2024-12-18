@@ -41,11 +41,6 @@ deleteBtns.forEach((btn) => {
           },
           body: 'id=' + songId
         })
-
-
-
-
-        
         .then(response => response.json())
         .then(data => {
           if (data.success) {

@@ -3,40 +3,42 @@ include 'connection.php';
 
 $name = $_POST['song'];
 $artist = $_POST['artist'];
+$uploadSuccess = false;
 
-// File upload handling
-if(isset($_FILES['coverImage'])) {
-    $file = $_FILES['coverImage'];
-    $fileName = $file['name'];
-    $fileTmpName = $file['tmp_name'];
-    $fileError = $file['error'];
+
+if (isset($name) && isset($artist)) {
     
     $uploadDir = 'uploads/';
-    if (!file_exists($uploadDir)) {
-        mkdir($uploadDir, 0777, true);
-    }
-    
-    $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-    $uniqueFileName = uniqid() . '.' . $fileExt;
-    $fileDestination = $uploadDir . $uniqueFileName;
-    
-    if($fileError === 0) {
-        if(move_uploaded_file($fileTmpName, $fileDestination)) {
-            if (isset($name) && isset($artist)){
-                $sql = "INSERT INTO Song (name, artist, image_path) 
-                        VALUES ('$name', '$artist', '$fileDestination')";
-                                if ($conn->query($sql) === TRUE) {
-                                    $uploadSuccess = true;
-                                } else {
-                                    $errorMessage = "Error: " . $conn->error;
-                                }
 
-            }
-            
+    if(isset($_FILES['coverImage']) && $_FILES['coverImage']['error'] === 0) {
+        $file = $_FILES['coverImage'];
+        $fileName = $file['name'];
+        $fileTmpName = $file['tmp_name'];
+        $fileError = $file['error'];
+        
+        $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+        $uniqueFileName = uniqid() . '.' . $fileExt;
+        $fileDestination = "{$uploadDir}{$uniqueFileName}";
+        
+        if(move_uploaded_file($fileTmpName, $fileDestination)) {
+            $image_path = $fileDestination;
+        } else {
+            $image_path = "img/cover.jpg";
         }
-        else {
+
+        if($fileError !== 0) {
             $errorMessage = "Error uploading file";
-        } 
+        }
+    } else {
+        $image_path = "img/cover.jpg";
+    }
+
+    $sql = "INSERT INTO Song (name, artist, image_path) 
+    VALUES ('$name', '$artist', '$image_path')";
+    if ($conn->query($sql) === TRUE) {
+        $uploadSuccess = true;
+    } else {
+        $errorMessage = "Error: " . $conn->error;
     }
 }
 

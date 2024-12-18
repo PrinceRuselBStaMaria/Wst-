@@ -2,13 +2,13 @@
 include 'connection.php';
 
 if(isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM Song WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $song = $result->fetch_assoc();
+        $id = $_GET['id'];
+        $sql = "SELECT * FROM Song WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $song = $result->fetch_assoc();
 }
 ?>
 <!DOCTYPE html>

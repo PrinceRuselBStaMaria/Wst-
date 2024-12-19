@@ -22,31 +22,49 @@ document.addEventListener("DOMContentLoaded", function () {
   deleteBtns.forEach((btn) =>{
     btn.addEventListener("click", function (){
       const idtoDelete = btn.getAttribute("data-id");
-      if(confirm("Delete this song?")){
-        fetch("delete_song.php", {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: 'id='+idtoDelete
-        })
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            const row = this.closest('tr');
-            row.remove();
-          } else {
+
+      Swal.fire({ 
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch("delete_song.php", {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'id='+idtoDelete
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              const row = this.closest('tr');
+              row.remove();
+              Swal.fire({
+                title: "Deleted!",
+                text: "The song has been deleted.",
+                icon: "success"});
+            } else {
+              Swal.fire({
+                title: "Error!",
+                text: "Failed to delete the song.",
+                icon: "error"});
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
             alert('Error deleting song');
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          alert('Error deleting song');
-        });
-        
-      }
-    })
-  })
+          });
+        }
+      });
+    });
+  });
+
 
   editBtns.forEach((btn) => {
     btn.addEventListener("click", function() {

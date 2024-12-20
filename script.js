@@ -73,4 +73,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  const coverImageInput = document.getElementById('coverImage');
+  if (coverImageInput) {
+      coverImageInput.onchange = function(e) {
+          const fileNameDisplay = document.getElementById('fileName');
+          const file = e.target.files[0];
+          
+          if(file && fileNameDisplay) {
+              fileNameDisplay.textContent = file.name;
+          }
+      }
+  }
+
 });

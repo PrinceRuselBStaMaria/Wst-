@@ -1,3 +1,5 @@
+<!-- Form.php -->
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +17,6 @@
     <img src="img/close.svg" alt="exit">
 </button>
     <div class="container">
-    <!-- Modified form with file upload -->
     <form action="insert.php" method="POST" enctype="multipart/form-data">
         <div class="centered">
         <div>
@@ -35,6 +36,7 @@
         <input type="file" name="coverImage" id="coverImage" accept="image/*">
             Upload image
         </label>
+        <div id="fileName"></div>
         </div>  
         <div>
         <button type="submit" class="btn">Submit</button>
@@ -44,21 +46,6 @@
     </div>
 </div>
 
-<!-- Add JavaScript for image preview -->
-<script>
-document.getElementById('coverImage').onchange = function(e) {
-    const preview = document.getElementById('imagePreview');
-    const file = e.target.files[0];
-    const reader = new FileReader();
-
-    reader.onload = function(e) {
-        preview.innerHTML = `<img src="${e.target.result}" class="preview-img">`;
-    }
-
-    if(file) {
-        reader.readAsDataURL(file);
-    }
-}
-</script>
+<script src="script.js"></script>
 </body>
 </html>

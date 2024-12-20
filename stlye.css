@@ -1,3 +1,5 @@
+/*Style.css*/
+
 @import url("https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap");
 
 * {
@@ -219,7 +221,6 @@
   height: 100%;
 }
 
-/* From Uiverse.io by Mike11jr */
 .btn {
   width: 200px;
   height: 50px;
@@ -303,7 +304,7 @@ form input::placeholder {
   cursor: pointer;
   transform: translateY(-5px);
 }
-/* From Uiverse.io by dalbrechtmartin */
+
 .starbut {
   position: relative;
   width: 270px;
@@ -605,4 +606,9 @@ form input::placeholder {
   100% {
     transform: translateY(0px);
   }
+}
+#fileName {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #ffffff;
 }
